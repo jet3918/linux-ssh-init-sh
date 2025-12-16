@@ -964,6 +964,18 @@ rand_u16() {
 }
 
 ensure_port_tools() {
+  # === [新增] 强制安装 nc (netcat) ===
+  if ! command -v nc >/dev/null 2>&1; then
+    echo "Installing missing dependency: netcat..."
+    case "$PM" in
+      apt) install_pkg netcat-openbsd ;;
+      yum) install_pkg nc ;;
+      apk) install_pkg netcat-openbsd ;;
+    esac
+  fi
+  # ==============================
+
+  # 原有的 ss/netstat 检查保持不变
   command -v ss >/dev/null 2>&1 && return 0
   command -v netstat >/dev/null 2>&1 && return 0
   case "$PM" in
@@ -2018,6 +2030,17 @@ info "OpenSSH Version: ${OPENSSH_VER_MAJOR}.${OPENSSH_VER_MINOR}"
 
 install_pkg_try curl >/dev/null 2>&1 || true
 install_pkg_try wget >/dev/null 2>&1 || true
+
+# === [新增] 补充常用管理工具 ===
+if ! command -v sudo >/dev/null 2>&1; then
+  info "Installing missing dependency: sudo..."
+  install_pkg sudo >/dev/null 2>&1 || true
+fi
+
+if ! command -v hostname >/dev/null 2>&1; then
+  # Debian/Ubuntu 下 hostname 命令通常在 hostname 包或 net-tools 中
+  install_pkg hostname >/dev/null 2>&1 || true
+fi
 
 if [ "$DO_UPDATE" = "y" ]; then info "$(msg I_UPD)"; update_system; fi
 if [ "$DO_BBR" = "y" ]; then info "$(msg I_BBR)"; enable_bbr; fi
