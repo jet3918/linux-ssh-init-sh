@@ -270,7 +270,7 @@ msg() {
       INFO_SUDO_CONFIGURED) echo "✅ 为用户配置了sudo权限" ;;
       WARN_SSH_PROTOCOL) echo "⚠️ SSH协议握手失败或超时" ;;
       INFO_SSH_PROTOCOL_OK) echo "✅ SSH协议握手成功" ;;
-      WARN_PORT_OPEN_BUT_FAIL) echo "⚠️ 端口已打开，但SSH客户端连接失败" ;;
+      WARN_PORT_OPEN_BUT_FAIL) echo "⚠️ 端口已打开，但SSH客户端连接失败(通常因无私钥或默认私钥不匹配)。此非错误，请务必人工测试连接！" ;;
       WARN_X11_FORWARDING) echo "⚠️ X11转发已启用，可能存在安全风险" ;;
       WARN_EMPTY_PASSWORDS) echo "⚠️ 允许空密码，存在安全风险" ;;
       WARN_INSECURE_OPTIONS) echo "⚠️ 检测到非关键的不安全选项 (仅提示，不影响安装)" ;;
@@ -408,7 +408,7 @@ msg() {
       INFO_SUDO_CONFIGURED) echo "✅ Configured sudo permissions for user" ;;
       WARN_SSH_PROTOCOL) echo "⚠️ SSH protocol handshake failed or timed out" ;;
       INFO_SSH_PROTOCOL_OK) echo "✅ SSH protocol handshake successful" ;;
-      WARN_PORT_OPEN_BUT_FAIL) echo "⚠️ Port is open but SSH client connection failed" ;;
+      WARN_PORT_OPEN_BUT_FAIL) echo "⚠️ Port is open, but SSH connection failed (likely due to missing/mismatched private key). This is NOT an error. Please verify connection manually!" ;;
       WARN_X11_FORWARDING) echo "⚠️ X11 forwarding enabled, potential security risk" ;;
       WARN_EMPTY_PASSWORDS) echo "⚠️ Empty passwords allowed, security risk" ;;
       WARN_INSECURE_OPTIONS) echo "⚠️ Found non-critical insecure options (Info only, proceeding)" ;;
