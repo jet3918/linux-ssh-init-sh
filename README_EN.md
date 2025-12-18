@@ -55,6 +55,7 @@ curl -fsSL https://raw.githubusercontent.com/247like/linux-ssh-init-sh/main/init
     --key-gh=247like \
     --bbr \
     --update \
+    --strict \
     --yes
 ```
 
