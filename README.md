@@ -33,7 +33,7 @@
 
 #### 1. 交互式运行 (推荐)
 ```bash
-curl -fsSL https://raw.githubusercontent.com/247like/linux-ssh-init-sh/main/init.sh -o init.sh && chmod +x init.sh && ./init.sh
+curl -fsSL https://raw.githubusercontent.com/jet3918/linux-ssh-init-sh/main/init.sh -o init.sh && chmod +x init.sh && ./init.sh
 ```
 
 #### 2. 强制使用英文界面
@@ -49,10 +49,10 @@ curl -fsSL https://raw.githubusercontent.com/247like/linux-ssh-init-sh/main/init
 *(配置 Root 用户、随机端口、从 GitHub 拉取公钥、开启 BBR、更新系统、自动确认)*
 
 ```bash
-curl -fsSL https://raw.githubusercontent.com/247like/linux-ssh-init-sh/main/init.sh | sh -s -- \
+curl -fsSL https://raw.githubusercontent.com/jet3918/linux-ssh-init-sh/main/init.sh | sh -s -- \
     --user=root \
     --port=random \
-    --key-gh=247like \
+    --key-gh=jet3918 \
     --bbr \
     --update \
     --strict \
